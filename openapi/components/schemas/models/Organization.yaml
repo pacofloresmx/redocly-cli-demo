@@ -1,0 +1,11 @@
+type: object
+description: Organización
+allOf:
+  - type: object
+    properties:
+      organizationId:
+        description: Identificador de organización
+        allOf:
+          - $ref: 'https://gist.githubusercontent.com/pacofloresmx/a4b2ad7b57bde2c4b7d20e82f2f06db5/raw/fefc350c1fcf5b2e524311750b731fbf6da35345/UUID.yaml'
+        readOnly: true
+        example: '7adf5234-5f81-4b0b-b74a-a09f0935e60e'

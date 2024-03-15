@@ -1,0 +1,10 @@
+name: x-api-key
+in: header
+description: API Key
+required: true
+schema:
+  type: string
+  minLength: 10
+  maxLength: 36
+  pattern: '[A-Z0-9]'
+  example: 125THE7YFR510TD2756

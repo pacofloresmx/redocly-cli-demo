@@ -1,0 +1,6 @@
+description: URL
+type: string
+format: uri
+maxLength: 2083
+pattern: '^(https?)://'
+example: 'https://api-sandbox.example.com/api-title/v1'

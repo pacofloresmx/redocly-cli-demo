@@ -1,0 +1,6 @@
+description: Número de teléfono
+type: string
+minLength: 9
+maxLength: 14
+pattern: '[+]?[0-9]{1,4}[0-9]{8,10}$'
+example: '+51991122334'

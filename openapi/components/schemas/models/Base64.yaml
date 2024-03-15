@@ -1,0 +1,4 @@
+description: Cadena de texto codificada en Base64
+type: string
+format: byte
+example: 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg=='

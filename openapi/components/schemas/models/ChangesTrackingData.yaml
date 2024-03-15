@@ -1,0 +1,27 @@
+type: object
+description: Datos para seguimiento de cambios en la entidad
+properties:
+  creationDate:
+    description: Fecha de creación de la entidad
+    allOf:
+      - $ref: './DateTime.yaml'
+    readOnly: true
+    example: '2021-05-11T15:00:00'
+  creatorUserId:
+    description: Identificador del usuario que creó la entidad
+    allOf:
+      - $ref: 'https://gist.githubusercontent.com/pacofloresmx/a4b2ad7b57bde2c4b7d20e82f2f06db5/raw/fefc350c1fcf5b2e524311750b731fbf6da35345/UUID.yaml'
+    readOnly: true
+    example: 'd2f1c74b-3a6c-4bf1-a4a1-d2507679f4a9'
+  lastUpdateDate:
+    description: Fecha de la última actualización de la entidad
+    allOf:
+      - $ref: './DateTime.yaml'
+    readOnly: true
+    example: '2021-05-12T18:00:00'
+  modifierUserId:
+    description: Identificador del usuario que actualizó la entidad
+    allOf:
+      - $ref: 'https://gist.githubusercontent.com/pacofloresmx/a4b2ad7b57bde2c4b7d20e82f2f06db5/raw/fefc350c1fcf5b2e524311750b731fbf6da35345/UUID.yaml'
+    readOnly: true
+    example: 'd2f1c74b-3a6c-4bf1-a4a1-d2507679f4a9'

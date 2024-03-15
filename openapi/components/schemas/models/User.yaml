@@ -1,0 +1,81 @@
+description: Usuario
+type: object
+allOf:
+  - type: object
+    properties:
+      userId:
+        description: Identificador del usuario
+        allOf:
+          - $ref: 'https://gist.githubusercontent.com/pacofloresmx/a4b2ad7b57bde2c4b7d20e82f2f06db5/raw/fefc350c1fcf5b2e524311750b731fbf6da35345/UUID.yaml'
+        readOnly: true
+        example: 'd7c40111-091f-4dc1-a959-8e147cf80c50'
+      name:
+        description: Nombre(s) del usuario
+        allOf:
+          - $ref: './OwnName.yaml'
+        example: 'Eva Belén'
+      lastName:
+        description: Apellidos del Usuario
+        allOf:
+          - $ref: './OwnName.yaml'
+        example: 'García Martínez'
+      email:
+        description: Correo electrónico del Usuario
+        allOf:
+          - $ref: './Email.yaml'
+        example: 'evabelen.garcia@email.com'
+      telephoneNumber:
+        description: Número de teléfono del Usuario
+        allOf:
+          - $ref: './Telephone.yaml'
+        example: '+51991122334'
+      role:
+        description: Rol del Usuario
+        type: string
+        maxLength: 100
+        enum: ['Administrador', 'Analiticos']
+        example: Administrador
+      position:
+        description: Cargo del Usuario
+        type: string
+        maxLength: 100
+        enum: ['CEO', 'CTO', 'Desarrollador']
+        example: Desarrollador
+      acceptComercialNotification:
+        description: Check para que el usuario reciba notificaciones comerciales
+        type: boolean
+        example: true
+      state:
+        description: Estado del Usuario
+        type: string
+        maxLength: 100
+        enum:
+          - Activo
+          - Inactivo
+        example: Activo
+      externalRef:
+        description: Referencia externa
+        type: string
+        maxLength: 100
+        example: ''
+      organizationId:
+        description: Identificador de la organización a la que pertenece el Usuario
+        allOf:
+          - $ref: 'https://gist.githubusercontent.com/pacofloresmx/a4b2ad7b57bde2c4b7d20e82f2f06db5/raw/fefc350c1fcf5b2e524311750b731fbf6da35345/UUID.yaml'
+        example: '7adf5234-5f81-4b0b-b74a-a09f0935e60e'
+      organization:
+        description: Organización a la que pertenece el Usuario
+        allOf:
+          - $ref: './Organization.yaml'
+        readOnly: true
+      version:
+        description: Versión
+        type: string
+        maxLength: 100
+        example: ''
+      avatar:
+        description: Avatar del usuario
+        allOf:
+          - $ref: './Base64.yaml'
+        example: 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg=='
+  - $ref: './ChangesTrackingData.yaml'

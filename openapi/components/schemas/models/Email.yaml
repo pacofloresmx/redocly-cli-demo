@@ -1,0 +1,5 @@
+description: Correo electrónico
+type: string
+format: email
+maxLength: 100
+example: eva.b.garcia@example.com

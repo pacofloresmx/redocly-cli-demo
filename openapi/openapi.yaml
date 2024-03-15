@@ -1,0 +1,95 @@
+openapi: 3.1.0
+info:
+  title: API Title
+  version: 1.0.0
+  description: API description
+  contact:
+    name: Francisco Flores
+    email: paco.flores.mx@gmail.com
+servers:
+  - url: 'https://api-sandbox.example.com/api-title/v1'
+    description: Servidor de DEV
+  - url: 'https://api.example.com/api-title/v1'
+    description: Servidor de PROD
+tags:
+  - name: Usuarios
+    description: Servicios para la gestión de usuarios
+paths:
+  /users:
+    parameters:
+      - $ref: 'components/parameters/header/x-api-key.yaml'
+    post:
+      operationId: createUser
+      tags:
+        - Usuarios
+      summary: Agregar usuarios
+      description: Servicio para agregar usuarios
+      requestBody:
+        description: Cuerpo de la solicitud con la información para la creación de un Usuario
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreationRequest'
+            example:
+              name: Eva Belén
+              lastName: García Martínez
+              email: evabelen.garcia@email.com
+              telephoneNumber: '+51991122334'
+              role: Administrador
+              position: Desarrollador
+              acceptCommercialNotification: true
+              organizationId: '7adf5234-5f81-4b0b-b74a-a09f0935e60e'
+      responses:
+        '201':
+          description: Respuesta con el detalle del usuario creado
+          headers:
+            location:
+              description: URL del usuario creado
+              schema:
+                allOf:
+                  - $ref: 'components/schemas/models/URL.yaml'
+                example: 'https://api-sandbox.example.com/api-title/v1/users/d7c40111-091f-4dc1-a959-8e147cf80c50'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: 'components/schemas/response/StandardResponse.yaml'
+                  - description: Datos de respuesta
+                    type: object
+                    properties:
+                      payload:
+                        $ref: 'components/schemas/models/User.yaml'
+              example:
+                payload:
+                  userId: 'd7c40111-091f-4dc1-a959-8e147cf80c50'
+                  name: Eva Belén
+                  lastName: García Martínez
+                  email: evabelen.garcia@email.com
+                  telephoneNumber: '+51991122334'
+                  role: Administrador
+                  position: Desarrollador
+                  acceptComercialNotification: true
+                  state: Activo
+                  avatar: 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg=='
+                  creationDate: '2021-05-12T18:00:00Z'
+                  creatorUserId: 'd2f1c74b-3a6c-4bf1-a4a1-d2507679f4a9'
+                  lastUpdateDate: '2021-05-12T18:00:00Z'
+                  modifierUserId: 'd2f1c74b-3a6c-4bf1-a4a1-d2507679f4a9'
+components:
+  schemas:
+    UserCreationRequest:
+      type: object
+      description: Información necesaria para la creación de usuarios
+      allOf:
+        - $ref: 'components/schemas/models/User.yaml'
+      required:
+        - name
+        - lastName
+        - email
+        - telephoneNumber
+        - role
+        - position
+        - acceptCommercialNotification
+        - organizationId
+  
